@@ -29,6 +29,12 @@ const Table = () => {
     );
   };
 
+  const handleVerifySubmit = () => {
+    data.filter(row => row.Selected).forEach((row) => {
+      console.log(`ID: ${row.id}, Selected: ${row.Selected}, Company Name: ${row.CompanyName}`);
+    });
+  };
+
   return (
     <>
       <div className="table-container">
@@ -49,15 +55,7 @@ const Table = () => {
                 <td>{row.id}</td>
                 <td>{row.Batch}</td>
                 <td>{row.CompanyName}</td>
-                <td>
-                  <a
-                    href={row.OfferLetter}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View
-                  </a>
-                </td>
+                <td><a href={row.OfferLetter}>Offer Letter</a></td>
                 <td>{row.Verified}</td>
                 <td>
                   <input
@@ -70,9 +68,7 @@ const Table = () => {
             ))}
           </tbody>
         </table>
-      </div>
-      <div className="button-container">
-        <button className="bt">&#x2713; VERIFY SELECTED</button>
+        <button className="verify-button" onClick={handleVerifySubmit}>&#x2713; Verify Submit</button>
       </div>
     </>
   );
